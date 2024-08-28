@@ -20,8 +20,33 @@ def displaystatus():
 
     # Check if CS is searching for a match
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch.png')
+        pyautogui.locateOnScreen('static/cut/searchingformatch_extendedsidebar.png')
         return "searchingmatch"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    try:
+        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar.png')
+        return "searchingmatch"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    try:
+        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar2.png')
+        return "searchingmatch"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    try:
+        pyautogui.locateOnScreen('static/cut/searchingformatch_universal.png')
+        return "searchingmatch"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    # Check if player is selecting a gamemode (not in lobby)
+    try:
+        pyautogui.locateOnScreen('static/cut/notinlobby_selectingmatch.png')
+        return "notinlobbyselectingmode"
     except pyautogui.ImageNotFoundException:
         pass
 
@@ -49,6 +74,19 @@ def displaystatus():
     try:
         pyautogui.locateOnScreen('static/cut/notinlobby_friendcountericon_minifiedsidebar.png')
         return "notinlobby"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    # Check if player is playing
+    try:
+        pyautogui.locateOnScreen('static/cut/playing_ct.png')
+        return "playingct"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    try:
+        pyautogui.locateOnScreen('static/cut/playing_t.png')
+        return "playingt"
     except pyautogui.ImageNotFoundException:
         pass
 
