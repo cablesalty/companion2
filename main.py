@@ -11,14 +11,6 @@ def home():
 
 @app.route("/api/displaystatus")
 def displaystatus():
-    # Check if CS is searching for a match
-    try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch.png')
-        return "searchingmatch"
-    except pyautogui.ImageNotFoundException:
-        pass
-
-
     # Check if a match has been found
     try:
         pyautogui.locateOnScreen('static/cut/matchfound_acceptbtn.png')
@@ -26,6 +18,12 @@ def displaystatus():
     except pyautogui.ImageNotFoundException:
         pass
 
+    # Check if CS is searching for a match
+    try:
+        pyautogui.locateOnScreen('static/cut/searchingformatch.png')
+        return "searchingmatch"
+    except pyautogui.ImageNotFoundException:
+        pass
 
     # Check if player is in lobby
     try:
@@ -49,7 +47,7 @@ def displaystatus():
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/notinlobby_friendcountericon_minifiedsidebardebar.png')
+        pyautogui.locateOnScreen('static/cut/notinlobby_friendcountericon_minifiedsidebar.png')
         return "notinlobby"
     except pyautogui.ImageNotFoundException:
         pass
@@ -57,34 +55,14 @@ def displaystatus():
     return "unknown"
     
 
-@app.route("/api/isplayerinlobby")
-def isplayerinlobby():
+@app.route("/api/acceptmatch")
+def acceptmatch():
     try:
-        pyautogui.locateOnScreen('static/cut/inlobby_friendcountericon_minifiedsidebar.png')
-        inlobby = True
+        location = pyautogui.locateOnScreen('static/cut/matchfound_acceptbtn.png')
+        pyautogui.click(pyautogui.center(location))
+        return "ok"
     except pyautogui.ImageNotFoundException:
-        inlobby = False
-
-    if inlobby:
-        return "yes"
-    else:
-        return "no"
-
-@app.route("/api/ismatchfound")
-def ismatchfound():
-    try:
-        pyautogui.locateOnScreen('static/cut/matchfound_acceptbtn.png')
-        inlobby = True
-    except pyautogui.ImageNotFoundException:
-        inlobby = False
-
-    if inlobby:
-        return "yes"
-    else:
-        return "no"
-    
-
-
+        return "matchnotfound"
 
 if __name__ == '__main__':
     app.run(debug=True)
