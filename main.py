@@ -17,7 +17,7 @@ def displaystatus():
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
-    
+
 
     # Check if a match has been found
     try:
@@ -53,6 +53,8 @@ def displaystatus():
         return "notinlobby"
     except pyautogui.ImageNotFoundException:
         pass
+
+    return "unknown"
     
 
 @app.route("/api/isplayerinlobby")
