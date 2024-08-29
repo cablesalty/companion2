@@ -2,6 +2,7 @@ import flask
 import pyscreeze # even if not in use, pyautogui requires it
 import pyautogui
 import time
+import os
 
 app = flask.Flask(__name__)
 
@@ -20,28 +21,34 @@ def displaystatus():
 
     # Check if CS is searching for a match
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_extendedsidebar.png', confidence=0.5)
+        pyautogui.locateOnScreen('static/cut/searchingformatch_extendedsidebar.png', confidence=0.9)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
 
+    # try:
+    #     pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar.png', confidence=0.9)
+    #     return "searchingmatch"
+    # except pyautogui.ImageNotFoundException:
+    #     pass
+
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar.png', confidence=0.5)
+        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar2.png', confidence=0.9)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
 
-    try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar2.png', confidence=0.5)
-        return "searchingmatch"
-    except pyautogui.ImageNotFoundException:
-        pass
+    # try:
+    #     pyautogui.locateOnScreen('static/cut/searchingformatch_cancelbtn.png')
+    #     return "searchingmatch"
+    # except pyautogui.ImageNotFoundException:
+    #     pass
 
-    try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_universal.png', confidence=0.5)
-        return "searchingmatch"
-    except pyautogui.ImageNotFoundException:
-        pass
+    # try:
+    #     pyautogui.locateOnScreen('static/cut/searchingformatch_cancelbtn2.png')
+    #     return "searchingmatch"
+    # except pyautogui.ImageNotFoundException:
+    #     pass
 
     # Check if player is selecting a gamemode (not in lobby)
     try:
@@ -79,13 +86,13 @@ def displaystatus():
 
     # Check if player is playing
     try:
-        pyautogui.locateOnScreen('static/cut/playing_ct.png')
+        pyautogui.locateOnScreen('static/cut/playing_ct.png', confidence=0.8)
         return "playingct"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/playing_t.png')
+        pyautogui.locateOnScreen('static/cut/playing_t.png', confidence=0.8)
         return "playingt"
     except pyautogui.ImageNotFoundException:
         pass
@@ -100,7 +107,12 @@ def acceptmatch():
         pyautogui.click(pyautogui.center(location))
         return "ok"
     except pyautogui.ImageNotFoundException:
+        print("matchnotfound")
         return "matchnotfound"
+    
+@app.route("/api/stop")
+def stop():
+    os._exit(0)
 
 if __name__ == '__main__':
     app.run(debug=True, host="192.168.0.100")
