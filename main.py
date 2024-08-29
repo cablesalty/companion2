@@ -20,25 +20,25 @@ def displaystatus():
 
     # Check if CS is searching for a match
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_extendedsidebar.png')
+        pyautogui.locateOnScreen('static/cut/searchingformatch_extendedsidebar.png', confidence=0.5)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar.png')
+        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar.png', confidence=0.5)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar2.png')
+        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar2.png', confidence=0.5)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_universal.png')
+        pyautogui.locateOnScreen('static/cut/searchingformatch_universal.png', confidence=0.5)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
