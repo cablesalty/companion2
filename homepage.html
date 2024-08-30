@@ -209,6 +209,26 @@
                 document.getElementById("statusdesc").innerText = "Playing as Terrorist.";
                 document.getElementById("acceptmatchbtn").style.display = "none";
                 document.getElementById("lobby_card").style.backgroundColor = "#E9C565";
+            } else if (status == "died") {
+                document.getElementById("statustitle").innerText = "You died.";
+                document.getElementById("statusdesc").innerText = "You got owned. Womp womp.";
+                document.getElementById("acceptmatchbtn").style.display = "none";
+                document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
+            } else if (status == "buymenu") {
+                document.getElementById("statustitle").innerText = "Buying gear.";
+                document.getElementById("statusdesc").innerText = "You have the Buy Menu open.";
+                document.getElementById("acceptmatchbtn").style.display = "none";
+                document.getElementById("lobby_card").style.backgroundColor = "#2f5674";
+            } else if (status == "spectating") {
+                document.getElementById("statustitle").innerText = "Spectating.";
+                document.getElementById("statusdesc").innerText = "You are spectating another player.";
+                document.getElementById("acceptmatchbtn").style.display = "none";
+                document.getElementById("lobby_card").style.backgroundColor = "#adbaca";
+            } else if (status == "gamepaused") {
+                document.getElementById("statustitle").innerText = "Game paused.";
+                document.getElementById("statusdesc").innerText = "You paused the game.";
+                document.getElementById("acceptmatchbtn").style.display = "none";
+                document.getElementById("lobby_card").style.backgroundColor = "#adbaca";
             } else if (status == "unknown") {
                 document.getElementById("statustitle").innerText = "Unknown state.";
                 document.getElementById("statusdesc").innerText = "Failed to detect what is happening.";

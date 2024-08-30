@@ -50,6 +50,13 @@ def displaystatus():
     # except pyautogui.ImageNotFoundException:
     #     pass
 
+    # Check if the game is paused
+    # try:
+    #     pyautogui.locateOnScreen('static/cut/paused.png', confidence=7)
+    #     return "gamepaused"
+    # except pyautogui.ImageNotFoundException:
+    #     pass
+
     # Check if player is selecting a gamemode (not in lobby)
     try:
         pyautogui.locateOnScreen('static/cut/notinlobby_selectingmatch.png')
@@ -94,6 +101,34 @@ def displaystatus():
     try:
         pyautogui.locateOnScreen('static/cut/playing_t.png', confidence=0.8)
         return "playingt"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    # Check if player died
+    try:
+        pyautogui.locateOnScreen('static/cut/died.png', confidence=0.9)
+        return "died"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    try:
+        pyautogui.locateOnScreen('static/cut/died2.png', confidence=0.9)
+        return "died"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+    # Check if player is spectating
+    try:
+        pyautogui.locateOnScreen('static/cut/spectating.png', confidence=0.8)
+        return "spectating"
+    except pyautogui.ImageNotFoundException:
+        pass
+
+
+    # Check if player is buying stuff
+    try:
+        pyautogui.locateOnScreen('static/cut/buymenu.png', confidence=0.8)
+        return "buymenu"
     except pyautogui.ImageNotFoundException:
         pass
 
