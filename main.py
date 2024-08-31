@@ -1,17 +1,16 @@
 import flask
 import pyscreeze # even if not in use, pyautogui requires it
 import pyautogui
-import time
 import os
 
 app = flask.Flask(__name__)
 
 @app.route('/')
-def home():
+def home(): # Returns the front-end
     return flask.send_file("homepage.html")
 
 @app.route("/api/displaystatus")
-def displaystatus():
+def displaystatus(): # Returns what's happening on the screen.
     # Check if a match has been found
     try:
         pyautogui.locateOnScreen('static/cut/matchfound_acceptbtn.png')
@@ -26,36 +25,11 @@ def displaystatus():
     except pyautogui.ImageNotFoundException:
         pass
 
-    # try:
-    #     pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar.png', confidence=0.9)
-    #     return "searchingmatch"
-    # except pyautogui.ImageNotFoundException:
-    #     pass
-
     try:
         pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar2.png', confidence=0.9)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
-
-    # try:
-    #     pyautogui.locateOnScreen('static/cut/searchingformatch_cancelbtn.png')
-    #     return "searchingmatch"
-    # except pyautogui.ImageNotFoundException:
-    #     pass
-
-    # try:
-    #     pyautogui.locateOnScreen('static/cut/searchingformatch_cancelbtn2.png')
-    #     return "searchingmatch"
-    # except pyautogui.ImageNotFoundException:
-    #     pass
-
-    # Check if the game is paused
-    # try:
-    #     pyautogui.locateOnScreen('static/cut/paused.png', confidence=7)
-    #     return "gamepaused"
-    # except pyautogui.ImageNotFoundException:
-    #     pass
 
     # Check if player is selecting a gamemode (not in lobby)
     try:
@@ -136,7 +110,7 @@ def displaystatus():
     
 
 @app.route("/api/acceptmatch")
-def acceptmatch():
+def acceptmatch(): # Searches for an accept button and accepts the match.
     try:
         location = pyautogui.locateOnScreen('static/cut/matchfound_acceptbtn.png')
         pyautogui.click(pyautogui.center(location))
@@ -146,7 +120,7 @@ def acceptmatch():
         return "matchnotfound"
     
 @app.route("/api/stop")
-def stop():
+def stop(): # Stops the server completely.
     os._exit(0)
 
 if __name__ == '__main__':
