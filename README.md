@@ -4,6 +4,13 @@
 
 <h3 align="center">An unofficial mobile companion web app for Counter-Strike 2 (CS:2).</h3>
 
+# What does it do?
+companion2 allows you to see what is happening in CS:2, remotely start or stop matchmaking or remotely accept a match without being at your computer.
+
+<img src="readme_img2.png" width="100%" align="center"></img>
+
+The remote match accept feature is probably the most useful. Imagine going to get some water, and you can accept the match while you are filling your bottle outside.
+
 # Installation
 You need to install the server on your computer.
 ## 1: Install Python
