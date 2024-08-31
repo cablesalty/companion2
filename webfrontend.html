@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>companion2</title>
     <style>
         * {
@@ -98,7 +98,7 @@
             <button onclick="action_startmatchmaking()">Start matchmaking with current settings</button>
         </div>
         <div id="searchingformatchactions" class="colbtncontainer">
-            <button onclick="action_cancelsearch()">Cancel search</button>
+            <button onclick="action_stopmatchmaking()">Cancel search</button>
         </div>
 
         <div class="colbtncontainer" style="display: block;">
@@ -150,12 +150,10 @@
         }
 
         async function action_startmatchmaking() {
-            clearInterval(statuscheck);
             const status = getRequest("/api/startmatchmaking");
         }
 
         async function action_stopmatchmaking() {
-            clearInterval(statuscheck);
             const status = getRequest("/api/stopmatchmaking");
         }
     

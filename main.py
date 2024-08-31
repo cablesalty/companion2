@@ -32,6 +32,12 @@ def displaystatus(): # Returns what's happening on the screen.
     except pyautogui.ImageNotFoundException:
         pass
 
+    try:
+        pyautogui.locateOnScreen('static/cancelsearchbtn.png', confidence=0.9)
+        return "searchingmatch"
+    except pyautogui.ImageNotFoundException:
+        pass
+
     # Check if player is selecting a gamemode (not in lobby)
     try:
         pyautogui.locateOnScreen('static/notinlobby_selectingmatch.png')
@@ -122,8 +128,11 @@ def acceptmatch(): # Searches for an accept button and accepts the match.
 @app.route("/api/startmatchmaking")
 def startmatchmaking(): # Starts matchmaking
     try:
-        location = pyautogui.locateOnScreen('static/gobtn.png')
-        pyautogui.click(pyautogui.center(location))
+        pyautogui.moveTo(100, 100) # Do this to not block the button accidentally with a dialog
+        location = pyautogui.locateOnScreen('static/gobtn.png', confidence=0.8)
+        pyautogui.click(pyautogui.center(location), duration=0.1)
+        pyautogui.click() # double click 
+        pyautogui.moveTo(100, 100) # Do this to not block the button from getting found again
         return "ok"
     except pyautogui.ImageNotFoundException:
         return "fail"
@@ -131,8 +140,11 @@ def startmatchmaking(): # Starts matchmaking
 @app.route("/api/stopmatchmaking")
 def stopmatchmaking(): # Stops matchmaking
     try:
-        location = pyautogui.locateOnScreen('static/cancelsearchbtn.png')
+        pyautogui.moveTo(100, 100) # Do this to not block the button accidentally with a dialog
+        location = pyautogui.locateOnScreen('static/cancelsearchbtn.png', confidence=0.8)
         pyautogui.click(pyautogui.center(location))
+        pyautogui.click() # double click 
+        pyautogui.moveTo(100, 100) # Do this to not block the button from getting found again
         return "ok"
     except pyautogui.ImageNotFoundException:
         return "fail"
