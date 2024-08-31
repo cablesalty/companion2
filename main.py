@@ -116,8 +116,25 @@ def acceptmatch(): # Searches for an accept button and accepts the match.
         pyautogui.click(pyautogui.center(location))
         return "ok"
     except pyautogui.ImageNotFoundException:
-        print("matchnotfound")
         return "matchnotfound"
+    
+@app.route("/api/startmatchmaking")
+def startmatchmaking(): # Starts matchmaking
+    try:
+        location = pyautogui.locateOnScreen('static/gobtn.png')
+        pyautogui.click(pyautogui.center(location))
+        return "ok"
+    except pyautogui.ImageNotFoundException:
+        return "fail"
+    
+@app.route("/api/stopmatchmaking")
+def startmatchmaking(): # Stops matchmaking
+    try:
+        location = pyautogui.locateOnScreen('static/cancelsearchbtn.png')
+        pyautogui.click(pyautogui.center(location))
+        return "ok"
+    except pyautogui.ImageNotFoundException:
+        return "fail"
     
 @app.route("/api/stop")
 def stop(): # Stops the server completely.
