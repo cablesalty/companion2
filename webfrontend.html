@@ -148,6 +148,16 @@
             document.getElementById("statusdesc").innerText = "Relaunch the server on your computer, and restart the mobile app to start again.";
             document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
         }
+
+        async function action_startmatchmaking() {
+            clearInterval(statuscheck);
+            const status = getRequest("/api/startmatchmaking");
+        }
+
+        async function action_stopmatchmaking() {
+            clearInterval(statuscheck);
+            const status = getRequest("/api/stopmatchmaking");
+        }
     
         async function getStatus() {
             const status = await getRequest("/api/displaystatus");
