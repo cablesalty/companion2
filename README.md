@@ -1,6 +1,6 @@
 <h1 align="center">companion-2</h1>
 
-![Readme Image](readme_img1.png)
+<img src="readme_img1.png" width="100%" align="center"></img>
 
 <h3 align="center">An unofficial mobile companion web app for Counter-Strike 2 (CS:2).</h3>
 
