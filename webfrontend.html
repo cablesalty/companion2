@@ -108,7 +108,7 @@
     </div>
 
     <script>
-        async function getRequest(url) { // Thanks, StackOverflow!
+        async function getRequest(url) {
             try {
                 let response = await fetch(url);
                 if (!response.ok) throw new Error('Network response was not ok');
