@@ -161,4 +161,4 @@ if __name__ == '__main__':
     s.close()
 
     # Start Flask
-    app.run(debug=True, host=localip)
+    app.run(debug=False, host=localip)
