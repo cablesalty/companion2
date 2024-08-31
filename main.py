@@ -2,12 +2,13 @@ import flask
 import pyscreeze # even if not in use, pyautogui requires it
 import pyautogui
 import os
+import socket
 
 app = flask.Flask(__name__)
 
 @app.route('/')
 def home(): # Returns the front-end
-    return flask.send_file("homepage.html")
+    return flask.send_file("webfrontend.html")
 
 @app.route("/api/displaystatus")
 def displaystatus(): # Returns what's happening on the screen.
@@ -128,7 +129,7 @@ def startmatchmaking(): # Starts matchmaking
         return "fail"
     
 @app.route("/api/stopmatchmaking")
-def startmatchmaking(): # Stops matchmaking
+def stopmatchmaking(): # Stops matchmaking
     try:
         location = pyautogui.locateOnScreen('static/cancelsearchbtn.png')
         pyautogui.click(pyautogui.center(location))
@@ -141,4 +142,11 @@ def stop(): # Stops the server completely.
     os._exit(0)
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.0.100")
+    # Resolve local IP (to bind to)
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    localip = s.getsockname()[0]
+    s.close()
+
+    # Start Flask
+    app.run(debug=True, host=localip)
