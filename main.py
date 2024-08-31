@@ -13,40 +13,40 @@ def home(): # Returns the front-end
 def displaystatus(): # Returns what's happening on the screen.
     # Check if a match has been found
     try:
-        pyautogui.locateOnScreen('static/cut/matchfound_acceptbtn.png')
+        pyautogui.locateOnScreen('static/matchfound_acceptbtn.png')
         return "matchfound"
     except pyautogui.ImageNotFoundException:
         pass
 
     # Check if CS is searching for a match
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_extendedsidebar.png', confidence=0.9)
+        pyautogui.locateOnScreen('static/searchingformatch_extendedsidebar.png', confidence=0.9)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/searchingformatch_minifiedsidebar2.png', confidence=0.9)
+        pyautogui.locateOnScreen('static/searchingformatch_minifiedsidebar2.png', confidence=0.9)
         return "searchingmatch"
     except pyautogui.ImageNotFoundException:
         pass
 
     # Check if player is selecting a gamemode (not in lobby)
     try:
-        pyautogui.locateOnScreen('static/cut/notinlobby_selectingmatch.png')
+        pyautogui.locateOnScreen('static/notinlobby_selectingmatch.png')
         return "notinlobbyselectingmode"
     except pyautogui.ImageNotFoundException:
         pass
 
     # Check if player is in lobby
     try:
-        pyautogui.locateOnScreen('static/cut/inlobby_multipleicons_extendedsidebar.png')
+        pyautogui.locateOnScreen('static/inlobby_multipleicons_extendedsidebar.png')
         return "inlobby"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/inlobby_friendcountericon_minifiedsidebar.png')
+        pyautogui.locateOnScreen('static/inlobby_friendcountericon_minifiedsidebar.png')
         return "inlobby"
     except pyautogui.ImageNotFoundException:
         pass
@@ -54,46 +54,46 @@ def displaystatus(): # Returns what's happening on the screen.
     
     # Check if player is not in a lobby
     try:
-        pyautogui.locateOnScreen('static/cut/notinlobby_multipleicons_extendedsidebar.png')
+        pyautogui.locateOnScreen('static/notinlobby_multipleicons_extendedsidebar.png')
         return "notinlobby"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/notinlobby_friendcountericon_minifiedsidebar.png')
+        pyautogui.locateOnScreen('static/notinlobby_friendcountericon_minifiedsidebar.png')
         return "notinlobby"
     except pyautogui.ImageNotFoundException:
         pass
 
     # Check if player is playing
     try:
-        pyautogui.locateOnScreen('static/cut/playing_ct.png', confidence=0.8)
+        pyautogui.locateOnScreen('static/playing_ct.png', confidence=0.8)
         return "playingct"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/playing_t.png', confidence=0.8)
+        pyautogui.locateOnScreen('static/playing_t.png', confidence=0.8)
         return "playingt"
     except pyautogui.ImageNotFoundException:
         pass
 
     # Check if player died
     try:
-        pyautogui.locateOnScreen('static/cut/died.png', confidence=0.9)
+        pyautogui.locateOnScreen('static/died.png', confidence=0.9)
         return "died"
     except pyautogui.ImageNotFoundException:
         pass
 
     try:
-        pyautogui.locateOnScreen('static/cut/died2.png', confidence=0.9)
+        pyautogui.locateOnScreen('static/died2.png', confidence=0.9)
         return "died"
     except pyautogui.ImageNotFoundException:
         pass
 
     # Check if player is spectating
     try:
-        pyautogui.locateOnScreen('static/cut/spectating.png', confidence=0.8)
+        pyautogui.locateOnScreen('static/spectating.png', confidence=0.8)
         return "spectating"
     except pyautogui.ImageNotFoundException:
         pass
@@ -101,7 +101,7 @@ def displaystatus(): # Returns what's happening on the screen.
 
     # Check if player is buying stuff
     try:
-        pyautogui.locateOnScreen('static/cut/buymenu.png', confidence=0.8)
+        pyautogui.locateOnScreen('static/buymenu.png', confidence=0.8)
         return "buymenu"
     except pyautogui.ImageNotFoundException:
         pass
@@ -112,7 +112,7 @@ def displaystatus(): # Returns what's happening on the screen.
 @app.route("/api/acceptmatch")
 def acceptmatch(): # Searches for an accept button and accepts the match.
     try:
-        location = pyautogui.locateOnScreen('static/cut/matchfound_acceptbtn.png')
+        location = pyautogui.locateOnScreen('static/matchfound_acceptbtn.png')
         pyautogui.click(pyautogui.center(location))
         return "ok"
     except pyautogui.ImageNotFoundException:
