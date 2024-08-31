@@ -160,5 +160,12 @@ if __name__ == '__main__':
     localip = s.getsockname()[0]
     s.close()
 
+    print("---------------------------------------------")
+    print("You can access companion2 from your phone by entering this")
+    print("into your preferred browser:")
+    print()
+    print("http://" + localip + ":5000")
+    print("---------------------------------------------")
+
     # Start Flask
     app.run(debug=False, host=localip)
