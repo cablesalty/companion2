@@ -12,24 +12,31 @@ companion2 allows you to see what is happening in CS:2, remotely start or stop m
 The remote match accept feature is probably the most useful. Imagine going to get some water, and you can accept the match while you are filling your bottle outside.
 
 # Installation
-You need to install the server on your computer.
 ## 1: Install Python
 If you don't have Python installed already, install it from [the official Python website](https://www.python.org/). The application was tested with [Python 3.12.5](https://www.python.org/downloads/release/python-3125/).
 
-## 2: Install dependencies
+## 2: Clone the repository
+Assuming you have `git`, you can use
+```
+git clone https://github.com/cablesalty/companion2
+```
+
+Alternatively, you can [download the project as a .zip file](https://github.com/cablesalty/companion2/archive/refs/heads/main.zip) and extract it.
+
+## 3: Install dependencies
 You need to install some packages first. Use this command:
 ```
 pip install -r requirements.txt
 ```
 
-## 3: Launch the server
+## 4: Launch the server
 You can launch the server using this command:
 ```
 python main.py
 ```
 This will create a console window hosting the server and information on how to connect your phone. You can minimize the window, but closing it will stop the server.
 
-## 4. Connect your phone
+## 5. Connect your phone
 When you launch the server, it will display something like this:
 ```
 ---------------------------------------------
