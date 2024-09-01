@@ -51,3 +51,5 @@ Make sure your phone and PC is on the same network, otherwise it will not work. 
 
 ## The server crashes.
 Make sure all the dependencies have been installed successfully and no other application is using port 5000.
+
+***Disclaimer: This project is not affiliated with Valve or Counter-Strike.***
