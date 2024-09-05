@@ -46,7 +46,6 @@ def displaystatus(): # Returns what's happening on the screen.
 @app.route("/api/acceptmatch")
 def acceptmatch(): # Searches for an accept button and accepts the match.
     try:
-        pyautogui.moveTo(100, 100) # Do this to not block the button accidentally with a dialog
         location = pyautogui.locateOnScreen('static/matchfound_acceptbtn.png')
         pyautogui.click(pyautogui.center(location))
         pyautogui.click() # double click 
