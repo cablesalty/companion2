@@ -16,12 +16,6 @@
             font-family: sans-serif;
         }
 
-        .titlebar {
-            /* text-align: center; */
-            background-color: #fc8f0b;
-            padding: 10px;
-        }
-
         .titlebar img {
             height: 50px;
             width: auto;
@@ -43,6 +37,9 @@
             transition-duration: 750ms;
             margin: 12px;
             border-radius: 20px;
+            -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
         }
 
         #acceptmatchbtn {
@@ -255,7 +252,7 @@
             }
         }
 
-        const statuscheck = setInterval(getStatus, 1000);
+        // const statuscheck = setInterval(getStatus, 1000);
         //clearInterval(statuscheck);
     </script>
     
