@@ -88,15 +88,54 @@ body {
     height: 60px;
     background-color: #5f5f5f;
     width: 100vw;
+    padding: 0;
+    text-align: center;
 }
 
 .navbarbtn {
     height: 100%;
     background-color: transparent;
-    border: 1px solid red;
-    width: 30px;
+    /* border: 1px solid red; */
+    border: none;
+    width: 40px;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 
 .navbarbtn i {
-    border: 1px solid red;
+    font-size: 25px; /* Adjust as needed */
+    width: 100%; /* Ensure the icon fills the button */
+}
+
+
+.anim_fadeout {
+    animation: key_fadeout 150ms linear forwards;
+}
+
+.anim_fadein {
+    animation: key_fadein 150ms linear forwards;
+}
+
+@keyframes key_fadeout {
+    0% {
+        scale: 1;
+        opacity: 1;
+    }
+
+    100% {
+        scale: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes key_fadein {
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 1
+    }
 }

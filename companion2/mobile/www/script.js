@@ -1,6 +1,8 @@
+let ip = "0.0.0.0";
+
 async function getRequest(url) {
     try {
-        let response = await fetch(url);
+        let response = await fetch(ip + url);
         if (!response.ok) throw new Error('Network response was not ok');
         return await response.text();
     } catch (error) {
@@ -166,5 +168,26 @@ async function getStatus() {
     }
 }
 
-//const statuscheck = setInterval(getStatus, 1000);
+function switchPage(page) {
+    if (page == "none")
+        return
+
+    // Play fade out animation
+    document.getElementById("bodytag").classList.remove("anim_fadein");
+    document.getElementById("bodytag").classList.add("anim_fadeout");
+
+    // Switch page after 180ms
+    setTimeout(() => {
+        if (page == "home")
+            document.location.href = "index.html";
+        else if (page == "news")
+            document.location.href = "news.html";
+        else if (page == "computer")
+            document.location.href = "computer.html";
+        else if (page == "settings")
+            document.location.href = "settings.html";
+    }, 150)
+}
+
+const statuscheck = setInterval(getStatus, 1000);
 //clearInterval(statuscheck);
