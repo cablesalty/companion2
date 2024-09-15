@@ -1,4 +1,5 @@
 import flask
+from flask_cors import CORS, cross_origin
 import pyscreeze # even if not in use, pyautogui requires it
 import pyautogui
 import os
@@ -12,12 +13,16 @@ def locate(imagePath, confidence=0.999): # locate an image on the screen
         return False
 
 app = flask.Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
+@cross_origin()
 def home(): # Returns the front-end
     return flask.send_file("webfrontend.html")
 
 @app.route("/api/displaystatus")
+@cross_origin()
 def displaystatus(): # Returns what's happening on the screen.
     if locate('static/matchfound_acceptbtn.png'):
         return "matchfound"
@@ -44,6 +49,7 @@ def displaystatus(): # Returns what's happening on the screen.
     
 
 @app.route("/api/acceptmatch")
+@cross_origin()
 def acceptmatch(): # Searches for an accept button and accepts the match.
     try:
         location = pyautogui.locateOnScreen('static/matchfound_acceptbtn.png')
@@ -54,6 +60,7 @@ def acceptmatch(): # Searches for an accept button and accepts the match.
         return "matchnotfound"
     
 @app.route("/api/startmatchmaking")
+@cross_origin()
 def startmatchmaking(): # Starts matchmaking
     try:
         pyautogui.moveTo(100, 100) # Do this to not block the button accidentally with a dialog
@@ -66,6 +73,7 @@ def startmatchmaking(): # Starts matchmaking
         return "fail"
     
 @app.route("/api/stopmatchmaking")
+@cross_origin()
 def stopmatchmaking(): # Stops matchmaking
     try:
         pyautogui.moveTo(100, 100) # Do this to not block the button accidentally with a dialog
@@ -78,6 +86,7 @@ def stopmatchmaking(): # Stops matchmaking
         return "fail"
     
 @app.route("/api/stop")
+@cross_origin()
 def stop(): # Stops the server completely.
     os._exit(0)
 

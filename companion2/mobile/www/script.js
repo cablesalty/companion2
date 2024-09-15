@@ -2,7 +2,8 @@ let ip = localStorage.getItem("ip") || "0.0.0.0";
 
 async function getRequest(url) {
     try {
-        let response = await fetch(ip + url);
+        let response = await fetch("http://" + ip + ":5000" + url);
+        console.log("http://" + ip + ":5000" + url)
         if (!response.ok) throw new Error('Network response was not ok');
         return await response.text();
     } catch (error) {
@@ -40,6 +41,11 @@ async function action_stopserver() {
     document.getElementById("statustitle").innerText = "Server stopped.";
     document.getElementById("statusdesc").innerText = "Relaunch the server on your computer, and restart the mobile app to start again.";
     document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
+}
+
+function action_conn_setip() {
+    localStorage.setItem("ip", prompt("Enter IP address (for example: 192.168.0.100)"));
+    window.location.reload();
 }
 
 async function action_startmatchmaking() {
@@ -201,7 +207,7 @@ async function checkConnectionStatus() {
 
 async function setConnStatusText(connStatus) {
     document.getElementById("connip").innerText = ip;
-    
+
     if (await connStatus) {
         document.getElementById("connstatus").innerText = "Connected";
     } else {
