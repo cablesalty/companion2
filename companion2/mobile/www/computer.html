@@ -13,29 +13,19 @@
 <body>
     <div id="bodytag" class="anim_fadein">
         <!-- Status card -->
-        <div id="lobby_card">
-            <h1 id="statustitle">Connection</h1>
-            <h2 id="statusdesc">Please wait while we get your status...</h2>
-            <br>
-            <button id="acceptmatchbtn" style="display: none;" onclick="acceptmatch()">ACCEPT</button>
+        <div id="conn_card">
+            <h1 id="connicon"><i class="fa-solid fa-computer" style="font-size: 80px;"></i></h1>
+            <h1 id="connstatus">Checking...</h1>
+            <h3 id="connip"></h3>
         </div>
     
         <!-- Buttons and Actions -->
         <br>
-        <div id="mainmenuactions" class="colbtncontainer">
-            <!-- Nothing here yet... -->
-        </div>
-        <div id="matchmakingactions" class="colbtncontainer">
-            <button onclick="action_startmatchmaking()">Start matchmaking with current settings</button>
-        </div>
-        <div id="searchingformatchactions" class="colbtncontainer">
-            <button onclick="action_stopmatchmaking()" class="topborderradius">Cancel search</button>
-        </div>
-    
         <div class="colbtncontainer" style="display: block;">
-            <button id="stopserverbtn" onclick="action_stopserver()" class="allborderradius">Stop server</button>
+            <button id="conn_setipbtn" onclick="action_conn_checkagain()" class="topborderradius">Check again</button>
+            <button id="conn_setipbtn" onclick="action_conn_setip()" class="noborderradius">Set IP</button>
+            <button id="conn_stopserverbtn" onclick="action_stopserver()" class="bottomborderradius">Stop server</button>
         </div>
-        <br>
     </div>
 
     <!-- Navbar -->

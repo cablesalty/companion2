@@ -1,4 +1,4 @@
-let ip = "0.0.0.0";
+let ip = localStorage.getItem("ip") || "0.0.0.0";
 
 async function getRequest(url) {
     try {
@@ -6,10 +6,10 @@ async function getRequest(url) {
         if (!response.ok) throw new Error('Network response was not ok');
         return await response.text();
     } catch (error) {
-        document.getElementById("statustitle").innerText = "Unknown state. (3)";
-        document.getElementById("statusdesc").innerText = "Request failed.";
-        document.getElementById("acceptmatchbtn").style.display = "none";
-        document.getElementById("lobby_card").style.backgroundColor = "#5f5f5f";
+        // document.getElementById("statustitle").innerText = "Unknown state. (3)";
+        // document.getElementById("statusdesc").innerText = "Request failed.";
+        // document.getElementById("acceptmatchbtn").style.display = "none";
+        // document.getElementById("lobby_card").style.backgroundColor = "#5f5f5f";
         return null;
     }
 }
@@ -189,5 +189,43 @@ function switchPage(page) {
     }, 150)
 }
 
-//const statuscheck = setInterval(getStatus, 1000);
-//clearInterval(statuscheck);
+async function checkConnectionStatus() {
+    const connstat = await getRequest("/api/displaystatus");
+    
+    if (connstat == null) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+async function setConnStatusText(connStatus) {
+    document.getElementById("connip").innerText = ip;
+    
+    if (await connStatus) {
+        document.getElementById("connstatus").innerText = "Connected";
+    } else {
+        document.getElementById("connstatus").innerText = "Disconnected";
+    }
+}
+
+async function startIntervalCheck() {
+    if (document.location.href.endsWith("index.html")) { // Only start statuscheck if user is on the main page
+        let connStatus = await checkConnectionStatus()
+        if (connStatus) {
+            const statuscheck = setInterval(getStatus, 1000);
+            //clearInterval(statuscheck);
+        } else {
+            console.log("User disconnected.");
+            document.getElementById("statustitle").innerText = "Disconnected.";
+            document.getElementById("statusdesc").innerText = "You are not connected to a server.";
+            document.getElementById("acceptmatchbtn").style.display = "none";
+            document.getElementById("lobby_card").style.backgroundColor = "#4f4f4f";
+        }
+    
+    } else if (document.location.href.endsWith("computer.html")) { // Only check connection status if user is on computer page
+        setConnStatusText(checkConnectionStatus())
+    }
+}
+
+startIntervalCheck()
