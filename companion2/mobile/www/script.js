@@ -189,5 +189,5 @@ function switchPage(page) {
     }, 150)
 }
 
-const statuscheck = setInterval(getStatus, 1000);
+//const statuscheck = setInterval(getStatus, 1000);
 //clearInterval(statuscheck);
