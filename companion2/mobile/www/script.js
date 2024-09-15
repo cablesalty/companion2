@@ -60,6 +60,7 @@ async function getStatus() {
         document.getElementById("mainmenuactions").style.display = "none";
         document.getElementById("matchmakingactions").style.display = "none";
         document.getElementById("searchingformatchactions").style.display = "none";
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else if (status == "searchingmatch") {
         document.getElementById("statustitle").innerText = "Searching for match...";
         document.getElementById("statusdesc").innerText = "Searching for servers and players...";
@@ -69,6 +70,7 @@ async function getStatus() {
         document.getElementById("mainmenuactions").style.display = "none";
         document.getElementById("matchmakingactions").style.display = "none";
         document.getElementById("searchingformatchactions").style.display = "block";
+        document.getElementById("stopserverbtn").classList.add("bottomborderradius");
     } else if (status == "notinlobbyselectingmode") {
         document.getElementById("statustitle").innerText = "Selecting gamemode.";
         document.getElementById("statusdesc").innerText = "You are not in a lobby.";
@@ -78,6 +80,7 @@ async function getStatus() {
         document.getElementById("mainmenuactions").style.display = "none";
         document.getElementById("matchmakingactions").style.display = "block";
         document.getElementById("searchingformatchactions").style.display = "none";
+        document.getElementById("stopserverbtn").classList.add("bottomborderradius");
     } else if (status == "inlobby") {
         document.getElementById("statustitle").innerText = "In lobby.";
         document.getElementById("statusdesc").innerText = "You are in a lobby.";
@@ -87,6 +90,7 @@ async function getStatus() {
         document.getElementById("mainmenuactions").style.display = "block";
         document.getElementById("matchmakingactions").style.display = "none";
         document.getElementById("searchingformatchactions").style.display = "none";
+        document.getElementById("stopserverbtn").classList.add("bottomborderradius");
     } else if (status == "notinlobby") {
         document.getElementById("statustitle").innerText = "All alone.";
         document.getElementById("statusdesc").innerText = "You are not in a lobby.";
@@ -96,36 +100,49 @@ async function getStatus() {
         document.getElementById("mainmenuactions").style.display = "block";
         document.getElementById("matchmakingactions").style.display = "none";
         document.getElementById("searchingformatchactions").style.display = "none";
+        document.getElementById("stopserverbtn").classList.add("bottomborderradius");
     } else if (status == "playingct") {
         document.getElementById("statustitle").innerText = "In a match.";
         document.getElementById("statusdesc").innerText = "Playing as Counter-Terrorist.";
         document.getElementById("acceptmatchbtn").style.display = "none";
         document.getElementById("lobby_card").style.backgroundColor = "#B3DDFF";
+
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else if (status == "playingt") {
         document.getElementById("statustitle").innerText = "In a match.";
         document.getElementById("statusdesc").innerText = "Playing as Terrorist.";
         document.getElementById("acceptmatchbtn").style.display = "none";
         document.getElementById("lobby_card").style.backgroundColor = "#E9C565";
+
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else if (status == "died") {
         document.getElementById("statustitle").innerText = "You died.";
         document.getElementById("statusdesc").innerText = "You got owned. Womp womp.";
         document.getElementById("acceptmatchbtn").style.display = "none";
         document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
+
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else if (status == "buymenu") {
         document.getElementById("statustitle").innerText = "Buying gear.";
         document.getElementById("statusdesc").innerText = "You have the Buy Menu open.";
         document.getElementById("acceptmatchbtn").style.display = "none";
         document.getElementById("lobby_card").style.backgroundColor = "#2f5674";
+        
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else if (status == "spectating") {
         document.getElementById("statustitle").innerText = "Spectating.";
         document.getElementById("statusdesc").innerText = "You are spectating another player.";
         document.getElementById("acceptmatchbtn").style.display = "none";
         document.getElementById("lobby_card").style.backgroundColor = "#adbaca";
+
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else if (status == "gamepaused") {
         document.getElementById("statustitle").innerText = "Game paused.";
         document.getElementById("statusdesc").innerText = "You paused the game.";
         document.getElementById("acceptmatchbtn").style.display = "none";
         document.getElementById("lobby_card").style.backgroundColor = "#adbaca";
+
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else if (status == "unknown") {
         document.getElementById("statustitle").innerText = "Unknown state.";
         document.getElementById("statusdesc").innerText = "Failed to detect what is happening.";
@@ -135,6 +152,7 @@ async function getStatus() {
         document.getElementById("mainmenuactions").style.display = "none";
         document.getElementById("matchmakingactions").style.display = "none";
         document.getElementById("searchingformatchactions").style.display = "none";
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     } else {
         document.getElementById("statustitle").innerText = "Unknown state. (2)";
         document.getElementById("statusdesc").innerText = "Foreign response from server.";
@@ -144,8 +162,9 @@ async function getStatus() {
         document.getElementById("mainmenuactions").style.display = "none";
         document.getElementById("matchmakingactions").style.display = "none";
         document.getElementById("searchingformatchactions").style.display = "none";
+        document.getElementById("stopserverbtn").classList.add("allborderradius");
     }
 }
 
-const statuscheck = setInterval(getStatus, 1000);
+//const statuscheck = setInterval(getStatus, 1000);
 //clearInterval(statuscheck);
