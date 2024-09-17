@@ -69,8 +69,11 @@ async function action_stopserver() {
 }
 
 function action_conn_setip() {
-    localStorage.setItem("ip", prompt("Enter IP address (for example: 192.168.0.100)"));
-    window.location.reload();
+    const newip = prompt("Enter IP address (for example: 192.168.0.100)");
+    if (newip != "" && newip != ip) {
+        localStorage.setItem("ip", newip);
+        window.location.reload();
+    }
 }
 
 async function action_conn_checkagain() {
