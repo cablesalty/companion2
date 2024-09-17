@@ -7,23 +7,26 @@ let laststate;
 console.log(history);
 console.log(typeof history);
 
-if (document.location.href.endsWith("history.html")) {
-    const historycontainer = document.getElementById("historycontainer");
-    history.reverse().forEach(element => {
-        historycontainer.innerHTML += '<div class="historyblock">' + element + '</div>'
-    });
+// load settings
+let set_pageanim = localStorage.getItem("pageanim");
+if (set_pageanim == null) {
+    console.log("No value set for checkfreq.");
+    set_pageanim = "enabled";
+    localStorage.setItem("pageanim", set_pageanim);
+}
+if (set_pageanim == "enabled") {
+    document.getElementById("bodytag").classList.add("anim_fadein");
 }
 
-// load settings
 let set_navbarstyle = localStorage.getItem("navbarstyle");
 if (set_navbarstyle == null) {
     console.log("No value set for navbarstyle.");
-    set_navbarstyle = "fullwidth";
+    set_navbarstyle = "island";
     localStorage.setItem("navbarstyle", set_navbarstyle);
-} else if (set_navbarstyle == "island") {
-    const navbar = document.querySelector(".navbar");
-    navbar.classList.remove("navbar");
-    navbar.classList.add("islandnavbar");
+} else if (set_navbarstyle == "fullwidth") {
+    const navbar = document.querySelector(".islandnavbar");
+    navbar.classList.remove("islandnavbar");
+    navbar.classList.add("navbar");
 }
 
 let set_checkfreq = localStorage.getItem("checkfreq");
@@ -33,8 +36,16 @@ if (set_checkfreq == null) {
     localStorage.setItem("checkfreq", set_checkfreq);
 }
 
+if (document.location.href.endsWith("history.html")) {
+    const historycontainer = document.getElementById("historycontainer");
+    history.reverse().forEach(element => {
+        historycontainer.innerHTML += '<div class="historyblock">' + element + '</div>'
+    });
+}
+
 console.log("set_navbarstyle",set_navbarstyle);
 console.log("set_checkfreq",set_checkfreq);
+console.log("set_pageanim",set_pageanim);
 
 async function getRequest(url) {
     try {
@@ -244,8 +255,10 @@ function switchPage(page) {
         return
 
     // Play fade out animation
-    document.getElementById("bodytag").classList.remove("anim_fadein");
-    document.getElementById("bodytag").classList.add("anim_fadeout");
+    if (set_pageanim == "enabled") {
+        document.getElementById("bodytag").classList.remove("anim_fadein");
+        document.getElementById("bodytag").classList.add("anim_fadeout");
+    }
 
     // Switch page after 180ms
     setTimeout(() => {

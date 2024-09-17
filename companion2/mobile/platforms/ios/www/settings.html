@@ -12,7 +12,7 @@
     <title>companion2</title>
 </head>
 <body>
-    <div id="bodytag" class="anim_fadein">
+    <div id="bodytag">
         <h1>Settings</h1>
         <br>
         <label for="connsettings">Connection settings:</label>
@@ -20,8 +20,8 @@
         <br>
         <label for="navbarstyle">Bottom navigation bar style:</label>
         <select name="navbarstyle" id="navbarstyle">
+          <option value="island">Island (Default)</option>
           <option value="fullwidth">Full Width</option>
-          <option value="island">Island</option>
         </select><br>
         <br>
         <label for="checkfreq">Check frequency: Every</label>
@@ -34,11 +34,17 @@
           <option value="10000">10 seconds</option>
         </select><br>
         <br>
+        <label for="pageanim">Page switch animation:</label>
+        <select name="pageanim" id="pageanim">
+          <option value="enabled">Enabled (Default)</option>
+          <option value="disabled">Disabled</option>
+        </select><br>
+        <br>
         <button onclick="localStorage.clear();window.location.reload()" style="color: red;">Reset and Clear Data</button>
       </div>
 
     <!-- Navbar -->
-    <div class="navbar">
+    <div class="islandnavbar">
         <button class="navbarbtn" onclick="switchPage('home')"><i class="fa-solid fa-building"></i></button>
         <button class="navbarbtn" onclick="switchPage('history')"><i class="fa-solid fa-history"></i></button>
         <button class="navbarbtn" onclick="switchPage('computer')"><i class="fa-solid fa-computer"></i></button>
