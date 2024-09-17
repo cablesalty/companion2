@@ -218,8 +218,8 @@ function switchPage(page) {
     setTimeout(() => {
         if (page == "home")
             document.location.href = "index.html";
-        else if (page == "news")
-            document.location.href = "news.html";
+        else if (page == "history")
+            document.location.href = "history.html";
         else if (page == "computer")
             document.location.href = "computer.html";
         else if (page == "settings")
