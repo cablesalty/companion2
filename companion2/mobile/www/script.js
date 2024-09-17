@@ -6,6 +6,10 @@ if (set_navbarstyle == null) {
     console.log("No value set for navbarstyle.");
     set_navbarstyle = "fullwidth";
     localStorage.setItem("navbarstyle", set_navbarstyle);
+} else if (set_navbarstyle == "island") {
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.remove("navbar");
+    navbar.classList.add("islandnavbar");
 }
 
 let set_checkfreq = localStorage.getItem("checkfreq");

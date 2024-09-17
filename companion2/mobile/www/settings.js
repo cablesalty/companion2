@@ -24,6 +24,15 @@ navbarstyle.addEventListener("change", function() {
     console.log("navbarstyle opt changed, saving")
     localStorage.setItem("navbarstyle", navbarstyle.value);
     console.log(`Selected option: ${navbarstyle.value}`);
+    if (navbarstyle.value == "island") {
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.remove("navbar");
+        navbar.classList.add("islandnavbar");
+    } else if (navbarstyle.value == "fullwidth") {
+        const navbar = document.querySelector(".islandnavbar");
+        navbar.classList.remove("islandnavbar");
+        navbar.classList.add("navbar");
+    }
 });
 
 checkfreq.addEventListener("change", function() {
