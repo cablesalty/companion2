@@ -167,6 +167,25 @@ a {
     animation: key_fadein 150ms ease forwards;
 }
 
+.historyblock {
+    color: rgb(222, 222, 222);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #5f5f5f;
+}
+
+.negativeblock {
+    background-color: rgb(228, 60, 60);
+    color: black;
+}
+
+.positiveblock {
+    background-color: #36B752;
+    color: black;
+}
+
 @keyframes key_fadeout {
     0% {
         scale: 1;
