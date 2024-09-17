@@ -90,7 +90,7 @@ def stopmatchmaking(): # Stops matchmaking
 def stop(): # Stops the server completely.
     os._exit(0)
 
-@app.route("/api/ping")
+@app.route("/api/ping/")
 @cross_origin()
 def pingpong(): # Ping api for connection testing
     return "pong"
