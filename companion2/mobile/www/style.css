@@ -10,6 +10,12 @@ body {
     padding: 12px;
 }
 
+a {
+    color: rgb(203, 203, 203);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .titlebar img {
     height: 50px;
     width: auto;
@@ -133,6 +139,10 @@ body {
 .navbarbtn i {
     font-size: 25px; /* Adjust as needed */
     width: 100%; /* Ensure the icon fills the button */
+}
+
+.selected {
+    color: #ffffff;
 }
 
 
