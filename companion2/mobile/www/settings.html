@@ -20,7 +20,7 @@
         <br>
         <label for="navbarstyle">Bottom navigation bar style:</label>
         <select name="navbarstyle" id="navbarstyle">
-          <option value="fullwidth">Full Width</option>
+          <option value="fullwidth">Full Width (Default)</option>
           <option value="island">Island</option>
         </select><br>
         <br>
@@ -32,6 +32,12 @@
           <option value="4000">4 seconds</option>
           <option value="5000">5 seconds</option>
           <option value="10000">10 seconds</option>
+        </select><br>
+        <br>
+        <label for="pageanim">Page switch animation:</label>
+        <select name="pageanim" id="pageanim">
+          <option value="enabled">Enabled (Default)</option>
+          <option value="disabled">Disabled</option>
         </select><br>
         <br>
         <button onclick="localStorage.clear();window.location.reload()" style="color: red;">Reset and Clear Data</button>

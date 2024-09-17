@@ -1,5 +1,6 @@
 const navbarstyle = document.getElementById("navbarstyle");
 const checkfreq = document.getElementById("checkfreq");
+const pageanim = document.getElementById("pageanim");
 
 // localstorage
 // let set_navbarstyle = localStorage.getItem("navbarstyle");
@@ -35,6 +36,12 @@ navbarstyle.addEventListener("change", function() {
     }
 });
 
+pageanim.addEventListener("change", function() {
+    console.log("pageanim opt changed, saving")
+    localStorage.setItem("pageanim", pageanim.value);
+    console.log(`Selected option: ${pageanim.value}`);
+});
+
 checkfreq.addEventListener("change", function() {
     console.log("checkfreq opt changed, saving")
     localStorage.setItem("checkfreq", checkfreq.value);
@@ -44,3 +51,4 @@ checkfreq.addEventListener("change", function() {
 // Select saved option in UI
 document.querySelector('#navbarstyle option[value="' + set_navbarstyle + '"]').selected = true;
 document.querySelector('#checkfreq option[value="' + set_checkfreq + '"]').selected = true;
+document.querySelector('#pageanim option[value="' + set_pageanim + '"]').selected = true;

@@ -33,8 +33,16 @@ if (set_checkfreq == null) {
     localStorage.setItem("checkfreq", set_checkfreq);
 }
 
+let set_pageanim = localStorage.getItem("pageanim");
+if (set_pageanim == null) {
+    console.log("No value set for checkfreq.");
+    set_pageanim = "enabled";
+    localStorage.setItem("pageanim", set_pageanim);
+}
+
 console.log("set_navbarstyle",set_navbarstyle);
 console.log("set_checkfreq",set_checkfreq);
+console.log("set_pageanim",set_pageanim);
 
 async function getRequest(url) {
     try {
