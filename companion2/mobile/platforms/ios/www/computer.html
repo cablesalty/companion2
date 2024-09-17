@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link href="fa/css/fontawesome.css" rel="stylesheet" />
+    <link href="fa/css/brands.css" rel="stylesheet" />
+    <link href="fa/css/solid.css" rel="stylesheet" />
+    <title>companion2</title>
+</head>
+<body>
+    <div id="bodytag" class="anim_fadein">
+        <!-- Status card -->
+        <div id="conn_card">
+            <h1 id="connicon"><i class="fa-solid fa-computer" style="font-size: 80px;"></i></h1>
+            <h1 id="connstatus">Checking...</h1>
+            <h3 id="connip"></h3>
+        </div>
+    
+        <!-- Buttons and Actions -->
+        <br>
+        <div class="colbtncontainer" style="display: block;">
+            <button id="conn_setipbtn" onclick="action_conn_checkagain()" class="topborderradius">Check again</button>
+            <button id="conn_setipbtn" onclick="action_conn_setip()" class="noborderradius">Set IP</button>
+            <button id="conn_stopserverbtn" onclick="action_stopserver()" class="bottomborderradius">Stop server</button>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <button class="navbarbtn" onclick="switchPage('home')"><i class="fa-solid fa-building"></i></button>
+        <button class="navbarbtn" onclick="switchPage('news')"><i class="fa-solid fa-newspaper"></i></button>
+        <button class="navbarbtn" onclick="switchPage('none')"><i class="fa-solid fa-computer"></i></button>
+        <button class="navbarbtn" onclick="switchPage('settings')"><i class="fa-solid fa-gear"></i></button>
+    </div>
+</body>
+</html>
