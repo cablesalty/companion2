@@ -1,4 +1,5 @@
 let ip = localStorage.getItem("ip") || "0.0.0.0";
+let statuscheck;
 
 // load settings
 let set_navbarstyle = localStorage.getItem("navbarstyle");
@@ -56,13 +57,15 @@ async function action_stopserver() {
     clearInterval(statuscheck);
     const status = getRequest("/api/stop");
     
-    document.getElementById("mainmenuactions").style.display = "none";
-    document.getElementById("matchmakingactions").style.display = "none";
-    document.getElementById("searchingformatchactions").style.display = "none";
+    if (document.location.href.endsWith("index.html")) {
+        document.getElementById("mainmenuactions").style.display = "none";
+        document.getElementById("matchmakingactions").style.display = "none";
+        document.getElementById("searchingformatchactions").style.display = "none";
 
-    document.getElementById("statustitle").innerText = "Server stopped.";
-    document.getElementById("statusdesc").innerText = "Relaunch the server on your computer, and restart the mobile app to start again.";
-    document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
+        document.getElementById("statustitle").innerText = "Server stopped.";
+        document.getElementById("statusdesc").innerText = "Relaunch the server on your computer, and restart the mobile app to start again.";
+        document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
+    }
 }
 
 function action_conn_setip() {
@@ -245,7 +248,7 @@ async function startIntervalCheck() {
     if (document.location.href.endsWith("index.html")) { // Only start statuscheck if user is on the main page
         let connStatus = await checkConnectionStatus()
         if (connStatus) {
-            const statuscheck = setInterval(getStatus, Number(set_checkfreq));
+            statuscheck = setInterval(getStatus, Number(set_checkfreq));
             //clearInterval(statuscheck);
         } else {
             console.log("User disconnected.");
