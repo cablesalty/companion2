@@ -70,6 +70,10 @@ function action_conn_setip() {
     window.location.reload();
 }
 
+async function action_conn_checkagain() {
+    setConnStatusText(checkConnectionStatus());
+}
+
 async function action_startmatchmaking() {
     const status = getRequest("/api/startmatchmaking");
 }
