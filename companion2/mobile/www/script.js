@@ -7,14 +7,17 @@ let laststate;
 console.log(history);
 console.log(typeof history);
 
-if (document.location.href.endsWith("history.html")) {
-    const historycontainer = document.getElementById("historycontainer");
-    history.reverse().forEach(element => {
-        historycontainer.innerHTML += '<div class="historyblock">' + element + '</div>'
-    });
+// load settings
+let set_pageanim = localStorage.getItem("pageanim");
+if (set_pageanim == null) {
+    console.log("No value set for checkfreq.");
+    set_pageanim = "enabled";
+    localStorage.setItem("pageanim", set_pageanim);
+}
+if (set_pageanim == "enabled") {
+    document.getElementById("bodytag").classList.add("anim_fadein");
 }
 
-// load settings
 let set_navbarstyle = localStorage.getItem("navbarstyle");
 if (set_navbarstyle == null) {
     console.log("No value set for navbarstyle.");
@@ -33,11 +36,11 @@ if (set_checkfreq == null) {
     localStorage.setItem("checkfreq", set_checkfreq);
 }
 
-let set_pageanim = localStorage.getItem("pageanim");
-if (set_pageanim == null) {
-    console.log("No value set for checkfreq.");
-    set_pageanim = "enabled";
-    localStorage.setItem("pageanim", set_pageanim);
+if (document.location.href.endsWith("history.html")) {
+    const historycontainer = document.getElementById("historycontainer");
+    history.reverse().forEach(element => {
+        historycontainer.innerHTML += '<div class="historyblock">' + element + '</div>'
+    });
 }
 
 console.log("set_navbarstyle",set_navbarstyle);
@@ -252,8 +255,10 @@ function switchPage(page) {
         return
 
     // Play fade out animation
-    document.getElementById("bodytag").classList.remove("anim_fadein");
-    document.getElementById("bodytag").classList.add("anim_fadeout");
+    if (set_pageanim == "enabled") {
+        document.getElementById("bodytag").classList.remove("anim_fadein");
+        document.getElementById("bodytag").classList.add("anim_fadeout");
+    }
 
     // Switch page after 180ms
     setTimeout(() => {

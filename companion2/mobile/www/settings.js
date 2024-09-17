@@ -40,6 +40,7 @@ pageanim.addEventListener("change", function() {
     console.log("pageanim opt changed, saving")
     localStorage.setItem("pageanim", pageanim.value);
     console.log(`Selected option: ${pageanim.value}`);
+    set_pageanim = pageanim.value;
 });
 
 checkfreq.addEventListener("change", function() {
