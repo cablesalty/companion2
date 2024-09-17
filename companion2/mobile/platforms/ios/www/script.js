@@ -1,4 +1,5 @@
 let ip = localStorage.getItem("ip") || "0.0.0.0";
+let statuscheck;
 
 // load settings
 let set_navbarstyle = localStorage.getItem("navbarstyle");
@@ -6,6 +7,10 @@ if (set_navbarstyle == null) {
     console.log("No value set for navbarstyle.");
     set_navbarstyle = "fullwidth";
     localStorage.setItem("navbarstyle", set_navbarstyle);
+} else if (set_navbarstyle == "island") {
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.remove("navbar");
+    navbar.classList.add("islandnavbar");
 }
 
 let set_checkfreq = localStorage.getItem("checkfreq");
@@ -52,18 +57,27 @@ async function action_stopserver() {
     clearInterval(statuscheck);
     const status = getRequest("/api/stop");
     
-    document.getElementById("mainmenuactions").style.display = "none";
-    document.getElementById("matchmakingactions").style.display = "none";
-    document.getElementById("searchingformatchactions").style.display = "none";
+    if (document.location.href.endsWith("index.html")) {
+        document.getElementById("mainmenuactions").style.display = "none";
+        document.getElementById("matchmakingactions").style.display = "none";
+        document.getElementById("searchingformatchactions").style.display = "none";
 
-    document.getElementById("statustitle").innerText = "Server stopped.";
-    document.getElementById("statusdesc").innerText = "Relaunch the server on your computer, and restart the mobile app to start again.";
-    document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
+        document.getElementById("statustitle").innerText = "Server stopped.";
+        document.getElementById("statusdesc").innerText = "Relaunch the server on your computer, and restart the mobile app to start again.";
+        document.getElementById("lobby_card").style.backgroundColor = "#310e0e";
+    }
 }
 
 function action_conn_setip() {
-    localStorage.setItem("ip", prompt("Enter IP address (for example: 192.168.0.100)"));
-    window.location.reload();
+    const newip = prompt("Enter IP address (for example: 192.168.0.100)");
+    if (newip != "" && newip != ip) {
+        localStorage.setItem("ip", newip);
+        window.location.reload();
+    }
+}
+
+async function action_conn_checkagain() {
+    setConnStatusText(checkConnectionStatus());
 }
 
 async function action_startmatchmaking() {
@@ -237,7 +251,7 @@ async function startIntervalCheck() {
     if (document.location.href.endsWith("index.html")) { // Only start statuscheck if user is on the main page
         let connStatus = await checkConnectionStatus()
         if (connStatus) {
-            const statuscheck = setInterval(getStatus, Number(set_checkfreq));
+            statuscheck = setInterval(getStatus, Number(set_checkfreq));
             //clearInterval(statuscheck);
         } else {
             console.log("User disconnected.");
