@@ -1,6 +1,19 @@
 let ip = localStorage.getItem("ip") || "0.0.0.0";
 let statuscheck;
 
+let history = JSON.parse(localStorage.getItem("history")) || [];
+let laststate;
+
+console.log(history);
+console.log(typeof history);
+
+if (document.location.href.endsWith("history.html")) {
+    const historycontainer = document.getElementById("historycontainer");
+    history.reverse().forEach(element => {
+        historycontainer.innerHTML += '<div class="historyblock">' + element + '</div>'
+    });
+}
+
 // load settings
 let set_navbarstyle = localStorage.getItem("navbarstyle");
 if (set_navbarstyle == null) {
@@ -204,6 +217,26 @@ async function getStatus() {
         document.getElementById("searchingformatchactions").style.display = "none";
         document.getElementById("stopserverbtn").classList.add("allborderradius");
     }
+
+    if (laststate != status) {
+        let historyText = document.getElementById("statustitle").innerText;
+        addHistory(historyText, status);
+    }
+}
+
+function addHistory(text, status) {
+    console.log(text);
+    laststate = status;
+
+    var date = new Date;
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    let historyToPush = text + " (" + hours.toString() + ":" + minutes + ")";
+    console.log(historyToPush);
+    history.push(historyToPush);
+    console.log(history);
+    localStorage.setItem("history", JSON.stringify(history));
 }
 
 function switchPage(page) {
