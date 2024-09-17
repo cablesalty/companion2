@@ -10,6 +10,12 @@ body {
     padding: 12px;
 }
 
+a {
+    color: rgb(203, 203, 203);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .titlebar img {
     height: 50px;
     width: auto;
@@ -135,13 +141,17 @@ body {
     width: 100%; /* Ensure the icon fills the button */
 }
 
+.selected {
+    color: #ffffff;
+}
+
 
 .anim_fadeout {
-    animation: key_fadeout 150ms linear forwards;
+    animation: key_fadeout 150ms ease forwards;
 }
 
 .anim_fadein {
-    animation: key_fadein 150ms linear forwards;
+    animation: key_fadein 150ms ease forwards;
 }
 
 @keyframes key_fadeout {

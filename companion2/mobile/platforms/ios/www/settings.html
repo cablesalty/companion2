@@ -8,11 +8,32 @@
     <link href="fa/css/fontawesome.css" rel="stylesheet" />
     <link href="fa/css/brands.css" rel="stylesheet" />
     <link href="fa/css/solid.css" rel="stylesheet" />
+    <script src="settings.js" defer></script>
     <title>companion2</title>
 </head>
 <body>
     <div id="bodytag" class="anim_fadein">
-
+        <h1>Settings</h1>
+        <br>
+        <label for="connsettings">Connection settings:</label>
+        <a name="connsettings" onclick="switchPage('computer')">Open</a><br>
+        <br>
+        <label for="navbarstyle">Bottom navigation bar style:</label>
+        <select name="navbarstyle" id="navbarstyle">
+          <option value="fullwidth">Full Width</option>
+          <option value="island">Island</option>
+        </select><br>
+        <br>
+        <label for="checkfreq">Check frequency: Every</label>
+        <select name="checkfreq" id="checkfreq">
+          <option value="1000">1 second (Default)</option>
+          <option value="2000">2 seconds</option>
+          <option value="3000">3 seconds</option>
+          <option value="4000">4 seconds</option>
+          <option value="5000">5 seconds</option>
+          <option value="10000">10 seconds</option>
+        </select><br>
+        <br>
     </div>
 
     <!-- Navbar -->
@@ -20,7 +41,7 @@
         <button class="navbarbtn" onclick="switchPage('home')"><i class="fa-solid fa-building"></i></button>
         <button class="navbarbtn" onclick="switchPage('news')"><i class="fa-solid fa-newspaper"></i></button>
         <button class="navbarbtn" onclick="switchPage('computer')"><i class="fa-solid fa-computer"></i></button>
-        <button class="navbarbtn" onclick="switchPage('none')"><i class="fa-solid fa-gear"></i></button>
+        <button class="navbarbtn selected" onclick="switchPage('none')"><i class="fa-solid fa-gear"></i></button>
     </div>
 </body>
 </html>

@@ -1,5 +1,23 @@
 let ip = localStorage.getItem("ip") || "0.0.0.0";
 
+// load settings
+let set_navbarstyle = localStorage.getItem("navbarstyle");
+if (set_navbarstyle == null) {
+    console.log("No value set for navbarstyle.");
+    set_navbarstyle = "fullwidth";
+    localStorage.setItem("navbarstyle", set_navbarstyle);
+}
+
+let set_checkfreq = localStorage.getItem("checkfreq");
+if (set_checkfreq == null) {
+    console.log("No value set for checkfreq.");
+    set_checkfreq = "1000";
+    localStorage.setItem("checkfreq", set_checkfreq);
+}
+
+console.log("set_navbarstyle",set_navbarstyle);
+console.log("set_checkfreq",set_checkfreq);
+
 async function getRequest(url) {
     try {
         let response = await fetch("http://" + ip + ":5000" + url);
@@ -219,7 +237,7 @@ async function startIntervalCheck() {
     if (document.location.href.endsWith("index.html")) { // Only start statuscheck if user is on the main page
         let connStatus = await checkConnectionStatus()
         if (connStatus) {
-            const statuscheck = setInterval(getStatus, 1000);
+            const statuscheck = setInterval(getStatus, Number(set_checkfreq));
             //clearInterval(statuscheck);
         } else {
             console.log("User disconnected.");
