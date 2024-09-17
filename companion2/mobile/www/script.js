@@ -274,7 +274,8 @@ function switchPage(page) {
 }
 
 async function checkConnectionStatus() {
-    const connstat = await getRequest("/api/displaystatus");
+    const connstat = await getRequest("/api/ping/");
+    console.log(connstat);
     
     if (connstat == null) {
         return false;
