@@ -5,8 +5,10 @@
 <h3 align="center">An unofficial mobile companion web app for Counter-Strike 2 (CS:2).</h3>
 
 > [!WARNING]
-> companion2 is still under development, and is unstable!
-> You can watch this repo to get notified.
+> Important update -- read below:  
+> After leaving this project for two years, I'm teaming up with a friend of mine who has knowledge
+> in injecting code into CS and the game's web API to further develop this application.  
+> In the future, this code will not use Apache Cordova and image scanning to achieve its purpose.
 
 # What does it do?
 companion2 allows you to see what is happening in CS:2, remotely start or stop matchmaking or remotely accept a match without being at your computer.
