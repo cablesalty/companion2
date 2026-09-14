@@ -6,9 +6,8 @@
 
 > [!WARNING]
 > Important update -- read below:  
-> After leaving this project for two years, I'm teaming up with a friend of mine who has knowledge
-> in injecting code into CS and the game's web API to further develop this application.  
-> In the future, this code will not use Apache Cordova and image scanning to achieve its purpose.
+> This version of this project has been completely abandoned, because it uses image recognition to detect different game states instead of GSI, and fixing this project would be harder than just creating a new one.
+> I'm working on a new version with an updated mobile UI, GSI, easier installation and possibly a play store release of the client application.
 
 # What does it do?
 companion2 allows you to see what is happening in CS:2, remotely start or stop matchmaking or remotely accept a match without being at your computer.
